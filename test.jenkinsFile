@@ -1,10 +1,13 @@
+@Library('TestSharedLibrary') _
+import packageR.logic
+
 pipeline {
     agent any
 
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello World test'
+                echo logic.pipelineStageLogic('Hello World test')
             }
         }
     }
