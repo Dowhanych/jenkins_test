@@ -1,13 +1,13 @@
-@Library('TestSharedLibrary') _
-import packageR.logic
-
 pipeline {
     agent any
 
     stages {
         stage('Hello') {
             steps {
-                echo logic.pipelineStageLogic('Hello World test')
+                script {
+                def pipelineLogic = load 'scripts/pipeline_logic.groovy'
+                echo pipelineLogic.pipelineStageLogic('test')
+                }
             }
         }
     }
