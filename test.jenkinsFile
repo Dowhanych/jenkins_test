@@ -5,8 +5,26 @@ pipeline {
         stage('Hello') {
             steps {
                 script {
-                def pipelineLogic = load 'scripts/pipeline_logic.groovy'
-                echo pipelineLogic.pipelineStageLogic('test')
+                    def pipelineLogic = load 'scripts/pipeline_logic.groovy'
+                    echo pipelineLogic.pipelineStageLogic('test')
+                }
+            }
+        }
+        stage('Colorful Output') {
+            steps {
+                script {
+                    // Echo colored messages using ansiColor step
+                    ansiColor('red') {
+                        echo "Error: Something went wrong."
+                    }
+
+                    ansiColor('green') {
+                        echo "Success: Operation completed."
+                    }
+
+                    ansiColor('yellow') {
+                        echo "Warning: This might cause issues."
+                    }
                 }
             }
         }
